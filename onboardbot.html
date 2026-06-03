@@ -39,48 +39,48 @@
 
             --success: var(--system-green);
             --error: var(--system-red);
-            --accent-soft: rgba(0, 122, 255, 0.1);
-            --accent-glow: rgba(0, 122, 255, 0.25);
+            --accent-soft: rgba(16, 185, 129, 0.1);
+            --accent-glow: rgba(16, 185, 129, 0.25);
         }
 
         /* Dark theme mockup definitions */
         [data-theme="dark"] {
-            --bg-wallpaper: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+            --bg-wallpaper: #0b0f19;
             --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.75);
-            --text-dim: rgba(255, 255, 255, 0.45);
-            --border: rgba(255, 255, 255, 0.08);
-            --glass-bg: rgba(15, 23, 42, 0.45);
-            --glass-blur: 24px;
-            --glass-border-top: rgba(255, 255, 255, 0.16);
-            --glass-border: rgba(255, 255, 255, 0.06);
-            --bg-card: rgba(30, 41, 59, 0.2);
-            --bg-deep: #030712;
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
-            --shadow-md: 0 12px 24px -4px rgba(0, 0, 0, 0.4), 0 4px 12px -2px rgba(0, 0, 0, 0.2);
-            --shadow-lg: 0 24px 48px -8px rgba(0, 0, 0, 0.6);
-            --shadow-glow: 0 0 28px 0 rgba(0, 122, 255, 0.2);
-            --accent: #3b82f6;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-dim: rgba(255, 255, 255, 0.5);
+            --border: rgba(255, 255, 255, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-blur: 30px;
+            --glass-border-top: rgba(255, 255, 255, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-deep: rgba(0, 0, 0, 0.2);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 10px 20px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+            --shadow-glow: 0 0 24px 0 rgba(16, 185, 129, 0.4);
+            --accent: #10b981;
         }
 
         /* Light theme mockup definitions (Frosted pastel) */
         [data-theme="light"] {
-            --bg-wallpaper: linear-gradient(135deg, #e0f2fe 0%, #f3e8ff 50%, #fce7f3 100%);
+            --bg-wallpaper: linear-gradient(135deg, #f8fafc 0%, #ecfdf5 100%);
             --text-primary: #0f172a;
-            --text-secondary: rgba(15, 23, 42, 0.75);
-            --text-dim: rgba(15, 23, 42, 0.45);
-            --border: rgba(15, 23, 42, 0.06);
-            --glass-bg: rgba(255, 255, 255, 0.45);
-            --glass-blur: 24px;
-            --glass-border-top: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(15, 23, 42, 0.04);
-            --bg-card: rgba(255, 255, 255, 0.45);
-            --bg-deep: #f1f5f9;
-            --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.02);
-            --shadow-md: 0 10px 20px -3px rgba(15, 23, 42, 0.04), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
-            --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.08);
-            --shadow-glow: 0 0 24px 0 rgba(0, 122, 255, 0.12);
-            --accent: #007aff;
+            --text-secondary: rgba(15, 23, 42, 0.85);
+            --text-dim: rgba(15, 23, 42, 0.5);
+            --border: rgba(16, 185, 129, 0.2);
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-blur: 32px;
+            --glass-border-top: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --bg-card: rgba(255, 255, 255, 0.25);
+            --bg-deep: rgba(255, 255, 255, 0.2);
+            --shadow-sm: 0 4px 6px rgba(16, 185, 129, 0.05);
+            --shadow-md: 0 10px 20px -3px rgba(16, 185, 129, 0.1), 0 4px 6px -2px rgba(16, 185, 129, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(16, 185, 129, 0.15);
+            --shadow-glow: 0 0 24px 0 rgba(16, 185, 129, 0.25);
+            --accent: #10b981;
         }
 
         /* Base Styling */
@@ -100,6 +100,15 @@
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: var(--radius-full); }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+        /* Hide scrollbar for the sidebar */
+        #left-rail::-webkit-scrollbar {
+            display: none;
+        }
+        #left-rail {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
 
         /* Layout Shell */
         #app-shell { display: flex; flex-direction: column; height: 100vh; width: 100vw; position: relative; overflow: hidden; }
@@ -107,12 +116,13 @@
         
         /* Theme Layout Rules */
         #topbar { display: flex; }
-        #left-rail { padding-top: var(--topbar-h); height: 100vh; }
-        #main-area { padding-top: var(--topbar-h); height: 100vh; }
+        #left-rail { height: calc(100vh - var(--topbar-h) - 72px); margin-top: calc(var(--topbar-h) + 48px); margin-left: 24px; margin-bottom: 24px; padding-top: 0; border-radius: 36px; border: 1px solid rgba(255, 255, 255, 0.15); }
+        #main-area { padding-top: calc(var(--topbar-h) + 48px); height: 100vh; }
 
         /* Top Bar */
         #topbar {
-            position: fixed; top: 0; left: 0; right: 0; height: var(--topbar-h);
+            position: fixed; top: 24px; left: 24px; right: 24px; height: var(--topbar-h);
+            border-radius: 36px; border: 1px solid rgba(255, 255, 255, 0.15);
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 24px; background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur));
             -webkit-backdrop-filter: blur(var(--glass-blur)); border-bottom: 1px solid var(--glass-border);
@@ -154,9 +164,9 @@
 
         /* Left Rail Sidebar */
         #left-rail {
-            width: var(--rail-width); min-width: var(--rail-width);
+            width: var(--rail-width); min-width: var(--rail-width); padding-top: 16px;
             background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur)); border-right: 1px solid var(--glass-border);
+            -webkit-backdrop-filter: blur(var(--glass-blur));
             display: flex; flex-direction: column; overflow-y: auto; overflow-x: hidden;
             z-index: 50; box-shadow: var(--shadow-sm); transition: transform 0.4s var(--ease-out), margin-left 0.4s var(--ease-out);
         }
@@ -237,7 +247,7 @@
             display: flex; align-items: center; justify-content: center; transition: all 0.2s var(--ease-smooth);
         }
         .sidebar-task-item input[type="checkbox"]:checked { background: var(--system-green); border-color: var(--system-green); }
-        .sidebar-task-item input[type="checkbox"]:checked::after { content: "✓"; color: white; font-size: 9px; font-weight: bold; }
+        .sidebar-task-item input[type="checkbox"]:checked::after { content: ""; color: white; font-size: 9px; font-weight: bold; }
         .sidebar-task-item span { transition: color 0.2s; }
         .sidebar-task-item.checked span { text-decoration: line-through; color: var(--text-dim); }
 
@@ -286,7 +296,7 @@
 
         /* Welcome / Hero Screen */
         #welcome-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 24px 40px 24px; min-height: calc(100vh - 200px); }
-        .welcome-avatar-wrap {
+        .welcome-avatar-wrap { display: none !important; 
             perspective: 800px;
             display: flex;
             justify-content: center;
@@ -313,10 +323,8 @@
             font-weight: 800;
             margin-bottom: 8px;
             letter-spacing: -0.04em;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--system-indigo) 50%, var(--system-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 10px rgba(0, 122, 255, 0.15));
+            color: #10b981;
+            filter: drop-shadow(0 2px 10px rgba(16, 185, 129, 0.15));
         }
         .welcome-greeting {
             font-size: 1.15rem;
@@ -458,7 +466,7 @@
             position: absolute; bottom: calc(100% + 8px); left: 50%;
             transform: translateX(-50%) scale(0.95); transform-origin: bottom center;
             background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--border); border-top-color: var(--glass-border-top);
+            border: 1px solid rgba(255, 255, 255, 0.3); border-top-color: rgba(255, 255, 255, 0.4);
             border-radius: var(--radius-md); padding: 6px; box-shadow: var(--shadow-lg);
             min-width: 150px; opacity: 0; pointer-events: none; transition: all 0.2s var(--ease-smooth); z-index: 2100;
         }
@@ -475,9 +483,9 @@
         .input-area { position: relative; width: 100%; }
         .input-wrapper { max-width: 800px; margin: 0 auto; width: 100%; position: relative; }
         .input-bar {
-            display: flex; align-items: flex-end; gap: 8px; background: var(--glass-bg);
+            display: flex; align-items: flex-end; gap: 8px; background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--border); border-top-color: var(--glass-border-top);
+            border: 1px solid rgba(255, 255, 255, 0.3); border-top-color: rgba(255, 255, 255, 0.4);
             border-radius: var(--radius-lg); padding: 12px 16px; box-shadow: var(--shadow-md);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
@@ -556,19 +564,11 @@
 
         /* Canvas Background Engine elements */
         #ambient-glow-canvas { position: fixed; inset: 0; pointer-events: none; z-index: -1; }
-        .ambient-sphere {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(140px);
-            opacity: 0.18;
-            pointer-events: none;
-            mix-blend-mode: plus-lighter;
-            transition: transform 1.2s ease-out;
-        }
+        .ambient-sphere { position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.6; pointer-events: none; mix-blend-mode: screen; transition: transform 1.2s ease-out; }
         .sphere-1 {
             width: 450px;
             height: 450px;
-            background: var(--system-blue);
+            background: #10b981;
             top: -120px;
             left: 15%;
             animation: sphere-drift-1 24s ease-in-out infinite alternate;
@@ -576,7 +576,7 @@
         .sphere-2 {
             width: 550px;
             height: 550px;
-            background: var(--system-purple);
+            background: #059669;
             top: 25%;
             right: -120px;
             animation: sphere-drift-2 30s ease-in-out infinite alternate;
@@ -584,7 +584,7 @@
         .sphere-3 {
             width: 400px;
             height: 400px;
-            background: var(--system-teal);
+            background: #34d399;
             bottom: -80px;
             left: 8%;
             animation: sphere-drift-3 26s ease-in-out infinite alternate;
@@ -691,7 +691,7 @@
         .confirm-close-btn { position: absolute; top: 12px; right: 12px; background: none; border: none; color: var(--text-dim); font-size: 16px; cursor: pointer; }
 
         /* Dynamic SVG Morphing Avatar elements */
-        .bot-avatar-svg { animation: avatar-breathe 3s ease-in-out infinite; transform-origin: center bottom; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15)); }
+        .bot-avatar-svg { width: 100%; height: 100%; animation: avatar-breathe 3s ease-in-out infinite; transform-origin: center bottom; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15)); }
         @keyframes avatar-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02) translateY(-1px); } }
         .bot-avatar-svg:hover { transform: scale(1.06) rotate(1deg); filter: drop-shadow(0 6px 16px rgba(0, 122, 255, 0.2)); }
         .avatar-eye-blink { animation: eye-blink 4s ease-in-out infinite; transform-origin: center; }
@@ -735,7 +735,8 @@
         }
 
         /* Achievements Row Grid */
-        .achievements-grid {
+        .achievements-grid { display: none !important;
+
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             gap: 6px;
@@ -1161,7 +1162,7 @@
 
     <div class="hr-numbers-dialog" id="hr-numbers-dialog" role="dialog" aria-label="HR Phone Numbers">
         <div class="hr-numbers-dialog-header">
-            <span class="hr-numbers-dialog-title">📞 HR Numbers</span>
+            <span class="hr-numbers-dialog-title"> HR Numbers</span>
             <button class="hr-numbers-dialog-close" id="hr-numbers-dialog-close-btn">×</button>
         </div>
         <div class="hr-numbers-list" id="hr-numbers-dialog-list">
@@ -1173,9 +1174,14 @@
 
         <header id="topbar">
             <div class="topbar-brand">
-                <button class="topbar-btn" id="sidebar-toggle-btn" title="Toggle Sidebar Panel" style="margin-right: 8px; font-size: 1.15rem; background: none; border: none; cursor: pointer;">☰</button>
+                <button class="topbar-btn" id="sidebar-toggle-btn" title="Toggle Sidebar Panel" style="margin-right: 8px; font-size: 1.15rem; background: none; border: none; cursor: pointer;"></button>
                 <div class="topbar-brand-text">
-                    <span class="brand-title">OnboardBot</span>
+                    <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle;">
+  <path d="M 20 50 Q 35 15, 50 50 T 80 50" stroke="#10b981" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <circle cx="20" cy="50" r="10" fill="#10b981" />
+  <circle cx="80" cy="50" r="10" fill="#10b981" />
+</svg>
+<span style="letter-spacing: 1px; font-weight: 800; color: var(--text-primary);">NEXUS</span>
                 </div>
             </div>
             
@@ -1190,12 +1196,9 @@
                     <span>Online</span>
                 </div>
                 
-                <button class="topbar-icon-action" id="topbar-hr-btn" style="color: #5856d6; font-size: 1.1rem; background: rgba(88, 86, 214, 0.12); border-radius: 50%; width: 32px; height: 32px;" title="HR Contact Numbers">👤</button>
-                <button class="topbar-icon-action" id="topbar-keyboard-btn" style="font-size: 1rem; margin-left: 4px;" title="View Keyboard Shortcuts">⌨️</button>
-                <button class="topbar-icon-action" id="topbar-mic-btn" style="font-size: 1rem; margin-left: 4px; position: relative;" title="Voice Assistant dictation">
-                    <span id="topbar-mic-icon" style="opacity: 0.5;">🎙️</span>
-                    <span id="topbar-mic-slash" style="position: absolute; color: #ff3b30; font-weight: bold; font-size: 1.1rem; transform: rotate(-45deg); pointer-events: none;">/</span>
-                </button>
+                <button class="topbar-icon-action" id="topbar-hr-btn" style="color: var(--accent); background: rgba(16, 185, 129, 0.15); border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;" title="HR Contact Numbers"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></button>
+                <button class="topbar-icon-action" id="topbar-keyboard-btn" style="margin-left: 8px; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;" title="View Keyboard Shortcuts"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="8" x2="6" y2="8"></line><line x1="10" y1="8" x2="10" y2="8"></line><line x1="14" y1="8" x2="14" y2="8"></line><line x1="18" y1="8" x2="18" y2="8"></line><line x1="6" y1="12" x2="6" y2="12"></line><line x1="10" y1="12" x2="10" y2="12"></line><line x1="14" y1="12" x2="14" y2="12"></line><line x1="18" y1="12" x2="18" y2="12"></line><line x1="8" y1="16" x2="16" y2="16"></line></svg></button>
+                <button class="topbar-icon-action" id="topbar-mic-btn" style="margin-left: 4px; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;" title="Voice Assistant dictation"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></button>
             </div>
         </header>
 
@@ -1273,7 +1276,7 @@
                                 <path d="M26 48 C 26 48, 33 55, 40 55 C 47 55, 54 48, 54 48" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none"/>
                             </svg>
                         </div>
-                        <div class="thinking-bubble-indicator">💭</div>
+                        <div class="thinking-bubble-indicator"></div>
                     </div>
                     <div class="profile-info">
                         <div class="name">OnboardBot</div>
@@ -1283,10 +1286,10 @@
 
                 <div class="rail-section">
                     <div class="progress-gauge-container">
-                        <svg class="progress-ring">
-                            <circle class="progress-ring-circle-bg" stroke-width="3.5" fill="transparent" r="18" cx="22" cy="22"/>
-                            <circle class="progress-ring-circle" id="onboarding-progress-circle" stroke-width="3.5" fill="transparent" r="18" cx="22" cy="22" stroke-dasharray="113.1" stroke-dashoffset="113.1"/>
-                            <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" id="onboarding-pct-text" style="font-size: 0.72rem; font-weight: 700; fill: var(--text-primary); font-family: var(--font-ui);">0%</text>
+                        <div style="font-weight: 800; font-size: 1.8rem; color: var(--accent); text-align: center; margin-bottom: -15px;" id="onboarding-pct-display">0%</div>
+                        <svg class="progress-ring" style="width: 70px; height: 70px; margin: 0 auto; display: block; overflow: visible;">
+                            <circle class="progress-ring-circle-bg" stroke-width="4" fill="transparent" r="30" cx="35" cy="35"/>
+                            <circle class="progress-ring-circle" id="onboarding-progress-circle" stroke-width="4" fill="transparent" r="30" cx="35" cy="35" stroke-dasharray="188.5" stroke-dashoffset="188.5" style="transform-origin: 35px 35px;"/>
                         </svg>
                         <div>
                             <div style="font-weight: 700; font-size: 0.85rem; color: var(--text-primary);">Onboarding Tasks</div>
@@ -1296,23 +1299,23 @@
                 </div>
 
                 <div class="rail-section">
-                    <div class="rail-section-header" style="margin-bottom: 4px;">
+                    <div class="rail-section-header" style="display:none !important;">
                         <span class="rail-section-title">Achievements</span>
                         <span style="font-size: 0.75rem; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: var(--radius-full);" id="achievements-badge-pill">0/6</span>
                     </div>
                     <div class="achievements-grid">
-                        <div class="achievement-badge-box" id="ach-tour" title="Interactive Tour Completed">🧭</div>
-                        <div class="achievement-badge-box" id="ach-checklist" title="All Checklist Tasks Completed">⚙️</div>
-                        <div class="achievement-badge-box" id="ach-leaves" title="Leave & Attendance Checked">🌴</div>
-                        <div class="achievement-badge-box" id="ach-journey" title="Journey Mode Explored">🗺️</div>
-                        <div class="achievement-badge-box" id="ach-speak" title="Voice Assist Activated">📢</div>
-                        <div class="achievement-badge-box" id="ach-map" title="HR Contacts Directory Opened">🏢</div>
+                        <div class="achievement-badge-box" id="ach-tour" title="Interactive Tour Completed"></div>
+                        <div class="achievement-badge-box" id="ach-checklist" title="All Checklist Tasks Completed">️</div>
+                        <div class="achievement-badge-box" id="ach-leaves" title="Leave & Attendance Checked"></div>
+                        <div class="achievement-badge-box" id="ach-journey" title="Journey Mode Explored">️</div>
+                        <div class="achievement-badge-box" id="ach-speak" title="Voice Assist Activated"></div>
+                        <div class="achievement-badge-box" id="ach-map" title="HR Contacts Directory Opened"></div>
                     </div>
                 </div>
 
                 <div class="rail-section" style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
                     <div class="setting-row">
-                        <span class="setting-label" style="font-weight: 600; display: flex; align-items: center; gap: 6px;">🗺️ Journey Mode</span>
+                        <span class="setting-label" style="font-weight: 600; display: flex; align-items: center; gap: 6px;">️ Journey Mode</span>
                         <label class="toggle-switch">
                             <input type="checkbox" id="journey-toggle">
                             <div class="toggle-track">
@@ -1326,27 +1329,27 @@
                     <span class="rail-section-title">Quick Actions</span>
                     <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 2px;">
                         <button class="quick-action-item" data-query="Tell me about company policies, dress code, and code of conduct">
-                            <span>📋 Company Policies</span>
+                            <span> Company Policies</span>
                             <span class="quick-action-chevron">›</span>
                         </button>
                         <button class="quick-action-item" data-query="How do I set up my laptop, VPN, email, and Slack workspace?">
-                            <span>💻 IT Setup Guide</span>
+                            <span> IT Setup Guide</span>
                             <span class="quick-action-chevron">›</span>
                         </button>
                         <button class="quick-action-item" data-query="What are the leave types, holiday calendar, and attendance policies?">
-                            <span>🏖️ Leave & Attendance</span>
+                            <span>️ Leave & Attendance</span>
                             <span class="quick-action-chevron">›</span>
                         </button>
                         <button class="quick-action-item" data-query="Show me information about health insurance, payroll, PF, and benefits">
-                            <span>💰 Benefits & Payroll</span>
+                            <span> Benefits & Payroll</span>
                             <span class="quick-action-chevron">›</span>
                         </button>
                         <button class="quick-action-item" data-query="Who are the key HR contacts I should know? Show me the directory.">
-                            <span>📞 HR Contacts</span>
+                            <span> HR Contacts</span>
                             <span class="quick-action-chevron">›</span>
                         </button>
                         <button class="quick-action-item" data-query="What can you help me with? Show your available commands.">
-                            <span>❓ Help & Commands</span>
+                            <span> Help & Commands</span>
                             <span class="quick-action-chevron">›</span>
                         </button>
                     </div>
@@ -1359,7 +1362,7 @@
                     <div class="history-list-wrapper" id="history-list" style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px;">
                         <!-- Populated dynamically via JS -->
                     </div>
-                    <button class="action-button-link" id="clear-history-btn" style="margin-top: 10px; border-radius: var(--radius-sm); font-size: 0.78rem; padding: 6px 12px; border: 1px dashed var(--border); color: var(--text-dim); width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px;">🗑️ Clear History</button>
+                    <button class="action-button-link" id="clear-history-btn" style="margin-top: 10px; border-radius: var(--radius-sm); font-size: 0.78rem; padding: 6px 12px; border: 1px dashed var(--border); color: var(--text-dim); width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px;">️ Clear History</button>
                 </div>
 
                 <div class="rail-section">
@@ -1385,7 +1388,7 @@
 
                 <div class="rail-section">
                     <button class="accordion-section-header" id="engine-settings-accordion-btn">
-                        <span style="display: flex; align-items: center; gap: 6px;">⚙️ Engine Settings</span>
+                        <span style="display: flex; align-items: center; gap: 6px;">️ Engine Settings</span>
                         <span id="accordion-chevron">▼</span>
                     </button>
                     
@@ -1452,8 +1455,8 @@
                 </div>
 
                 <div class="rail-section" style="display: flex; flex-direction: column; gap: 8px;">
-                    <button class="action-button-link" id="replay-tour-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 0;">📖 Replay Tour</button>
-                    <button class="action-button-link" id="export-summary-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 0;">📥 Export Summary</button>
+                    <button class="action-button-link" id="replay-tour-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 0;"> Replay Tour</button>
+                    <button class="action-button-link" id="export-summary-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 0;"> Export Summary</button>
                 </div>
 
                 <div class="rail-footer" style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 16px;">
@@ -1537,40 +1540,47 @@
                                         <path d="M26 48 C 26 48, 33 55, 40 55 C 47 55, 54 48, 54 48" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none"/>
                                     </svg>
                                 </div>
-                                <div class="thinking-bubble-indicator">💭</div>
+                                <div class="thinking-bubble-indicator"></div>
                             </div>
-                            <h1 class="welcome-brand" style="color: var(--accent); font-size: 2.2rem; font-weight: 700; margin-bottom: 8px;">OnboardBot</h1>
-                            <p class="welcome-greeting">Good morning! 🍳 Ready to tackle your first day?<br><span style="color:var(--text-dim); font-size:0.95rem;">Your guide to life at Nexus Technologies</span></p>
+                            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 15px;">
+    <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 4px 6px rgba(16, 185, 129, 0.2));">
+      <path d="M 15 50 Q 32.5 10, 50 50 T 85 50" stroke="#10b981" stroke-width="12" stroke-linecap="round" fill="none"/>
+      <circle cx="15" cy="50" r="10" fill="#10b981" />
+      <circle cx="85" cy="50" r="10" fill="#10b981" />
+    </svg>
+    <h1 class="welcome-brand" style="color: #10b981; font-size: 2.8rem; font-weight: 800; letter-spacing: 2px; margin-top: 5px; margin-bottom: 0;">NEXUS</h1>
+</div>
+                            <p class="welcome-greeting">Good morning!  Ready to tackle your first day?<br><span style="color:var(--text-dim); font-size:0.95rem;">Your guide to life at Nexus Technologies</span></p>
 
                             <div class="welcome-cards">
                                 <div class="welcome-card" data-query="Tell me about company policies, dress code, and code of conduct">
-                                    <div class="card-icon-badge">📋</div>
-                                    <h3 class="wc-title">Company Policies</h3>
+                                    <div class="card-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+<h3 class="wc-title">Company Policies</h3>
                                     <p class="wc-desc">Dress code, conduct, values & reviews</p>
                                 </div>
                                 <div class="welcome-card" data-query="How do I set up my laptop, VPN, email, and Slack workspace?">
-                                    <div class="card-icon-badge">💻</div>
-                                    <h3 class="wc-title">IT Setup Guide</h3>
+                                    <div class="card-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+<h3 class="wc-title">IT Setup Guide</h3>
                                     <p class="wc-desc">Laptop, VPN, email, Slack & 2FA</p>
                                 </div>
                                 <div class="welcome-card" data-query="What are the leave types, holiday calendar, and attendance policies?">
-                                    <div class="card-icon-badge">🏖️</div>
-                                    <h3 class="wc-title">Leave & Attendance</h3>
+                                    <div class="card-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
+<h3 class="wc-title">Leave & Attendance</h3>
                                     <p class="wc-desc">Leave types, holidays & applications</p>
                                 </div>
                                 <div class="welcome-card" data-query="Show me information about health insurance, payroll, PF, and benefits">
-                                    <div class="card-icon-badge">💰</div>
-                                    <h3 class="wc-title">Benefits & Payroll</h3>
+                                    <div class="card-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg></div>
+<h3 class="wc-title">Benefits & Payroll</h3>
                                     <p class="wc-desc">Insurance, PF, wellness programs</p>
                                 </div>
                                 <div class="welcome-card" data-query="Who are the key HR contacts I should know? Show me the directory.">
-                                    <div class="card-icon-badge">📞</div>
-                                    <h3 class="wc-title">HR Contacts</h3>
+                                    <div class="card-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+<h3 class="wc-title">HR Contacts</h3>
                                     <p class="wc-desc">Reach the right person quickly</p>
                                 </div>
                                 <div class="welcome-card" data-query="What can you help me with? Show your available commands.">
-                                    <div class="card-icon-badge">❓</div>
-                                    <h3 class="wc-title">Help & Commands</h3>
+                                    <div class="card-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div>
+<h3 class="wc-title">Help & Commands</h3>
                                     <p class="wc-desc">See what I can do</p>
                                 </div>
                             </div>
@@ -1582,12 +1592,12 @@
                 <div class="bottom-controls">
                     
                     <button class="tools-toggle" id="tools-toggle-btn">
-                        <span>✨ Tools</span>
+                        <span> Tools</span>
                     </button>
 
                     <div class="feature-strip" id="tools-feature-strip">
                         <div style="position:relative;">
-                            <button class="feature-btn" id="btn-translate">🌐 Translate</button>
+                            <button class="feature-btn" id="btn-translate"> Translate</button>
                             <div class="feature-dropdown" id="dropdown-translate">
                                 <button class="feature-dropdown-item selected" data-lang="en">English</button>
                                 <button class="feature-dropdown-item" data-lang="hi">Hindi</button>
@@ -1596,26 +1606,32 @@
                             </div>
                         </div>
                         <div style="position:relative;">
-                            <button class="feature-btn" id="btn-rephrase">✍️ Rephrase</button>
+                            <button class="feature-btn" id="btn-rephrase">️ Rephrase</button>
                             <div class="feature-dropdown" id="dropdown-rephrase">
                                 <button class="feature-dropdown-item selected" data-tone="professional">Professional</button>
                                 <button class="feature-dropdown-item" data-tone="casual">Casual</button>
                                 <button class="feature-dropdown-item" data-tone="polite">Polite</button>
                             </div>
                         </div>
-                        <button class="feature-btn" id="btn-summarize">📝 Summarize</button>
-                        <button class="feature-btn active" id="btn-sources">📂 Sources</button>
-                        <button class="feature-btn" id="btn-clear-chat">🗑️ Clear Chat</button>
-                        <button class="feature-btn" id="btn-export">📥 Export Summary</button>
+                        <button class="feature-btn" id="btn-summarize"> Summarize</button>
+                        <button class="feature-btn active" id="btn-sources"> Sources</button>
+                        <button class="feature-btn" id="btn-clear-chat">️ Clear Chat</button>
+                        <button class="feature-btn" id="btn-export"> Export Summary</button>
                     </div>
 
                     <div class="input-area">
                         <div class="input-wrapper">
                             <div class="input-bar" style="align-items: center;">
-                                <button class="input-bar-btn" id="attach-btn" title="Attach file" style="font-size: 1.1rem;">📎</button>
+                                <button class="input-bar-btn" id="attach-btn" title="Attach file" style="font-size: 1.1rem;">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+</button>
                                 <textarea id="chat-input" rows="1" placeholder="Ask me anything about Nexus Technologies..." maxlength="1000" style="padding: 10px 0;"></textarea>
-                                <button class="input-bar-btn" id="voice-input-btn" title="Voice dictation input mic" style="font-size: 1.1rem; margin-right: 4px;">🎤</button>
-                                <button class="send-btn" id="send-chat-btn" disabled style="display: flex; align-items: center; justify-content: center;">➔</button>
+                                <button class="input-bar-btn" id="voice-input-btn" title="Voice dictation input mic" style="font-size: 1.1rem; margin-right: 4px;">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+</button>
+                                <button class="send-btn" id="send-chat-btn" disabled style="display: flex; align-items: center; justify-content: center;">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px; margin-top:2px;"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+</button>
                             </div>
                             <div class="char-counter" id="input-char-counter">0 / 1000</div>
                         </div>
@@ -1631,7 +1647,7 @@
         const APP = {
             history: [],
             messages: [],
-            settings: { sound: true, stream: true, devMode: false, adhd: false, dyslexia: false, lowstim: false, theme: 'light' },
+            settings: { sound: true, stream: true, devMode: false, adhd: false, dyslexia: false, lowstim: false, theme: 'dark' },
             checklist: [false, false, false, false, false, false, false],
             leaves: { casual: { taken: 2, total: 12 }, sick: { taken: 1, total: 10 }, earned: { taken: 0, total: 15 } },
             achievements: { tour: false, checklist: false, leaves: false, journey: false, speak: false, map: false },
@@ -1728,9 +1744,9 @@
         
         function getGreeting() {
             const hrs = new Date().getHours();
-            if (hrs < 12) return "Good morning! 🍳 Ready to tackle your first day?";
-            if (hrs < 17) return "Good afternoon! 🌤️ Settled into your desk yet?";
-            return "Good evening! 🌙 Burning the midnight oil? Let me help you out.";
+            if (hrs < 12) return "Good morning!  Ready to tackle your first day?";
+            if (hrs < 17) return "Good afternoon! ️ Settled into your desk yet?";
+            return "Good evening! Burning the midnight oil? Let me help you out.";
         }
 
         function updateProgressGauge(pct, rawDone, total) {
@@ -1826,7 +1842,7 @@
             } else if (state === 'speaking') {
                 content.innerHTML = `<span>Reading Response Aloud</span>`;
             } else if (state === 'achievement') {
-                content.innerHTML = `<span>🏆 Milestone Achieved: ${text}</span>`;
+                content.innerHTML = `<span> Milestone Achieved: ${text}</span>`;
                 playSound('receive');
             } else {
                 content.innerHTML = `<span>${text}</span>`;
@@ -1880,7 +1896,7 @@
         }
 
         // Core RAG Semantic Engine Execution Pipelines
-        function processQueryEngine(query) {
+        async function processQueryEngine(query) {
             if (!query.trim()) return;
             
             // Render User bubble element logs
@@ -1889,77 +1905,120 @@
             updateInputState();
 
             // Append parsing latency simulated timeline
-            showTypingIndicator(true, "Scanning local vector index repositories...");
+            showTypingIndicator(true, "Consulting Nexus Knowledge Graph...");
             updateDynamicIsland('thinking');
 
-            setTimeout(() => {
-                const normalized = query.toLowerCase();
-                
-                // Track checklist update allocations
-                if (normalized.includes('policy') || normalized.includes('conduct')) updateChecklistState(0, true);
-                if (normalized.includes('it setup') || normalized.includes('vpn') || normalized.includes('laptop')) updateChecklistState(1, true);
-                if (normalized.includes('leave') || normalized.includes('holiday')) {
-                    updateChecklistState(2, true);
-                    APP.achievements.leaves = true;
-                    updateAchievementsUI();
-                }
-                if (normalized.includes('benefit') || normalized.includes('insurance') || normalized.includes('payroll')) updateChecklistState(3, true);
-                if (normalized.includes('contact') || normalized.includes('directory')) {
-                    updateChecklistState(4, true);
-                    APP.achievements.map = true;
-                    updateAchievementsUI();
-                }
-                if (normalized.includes('help') || normalized.includes('command')) updateChecklistState(5, true);
+            // Setup a blank bot message container for streaming
+            const msgObj = { role: 'bot', text: '', time: Date.now(), sources: [], followups: [] };
+            APP.messages.push(msgObj);
+            saveState();
 
-                // Run simple exact match parsing rules arrays loop
-                let bestMatch = null;
-                let maxScore = 0;
+            const welcome = document.getElementById('welcome-screen');
+            if (welcome) welcome.remove();
 
-                for (const item of KNOWLEDGE_BASE) {
-                    let score = 0;
-                    for (const kw of item.keywords) {
-                        if (normalized.includes(kw)) score += 2;
-                    }
-                    if (score > maxScore) { maxScore = score; bestMatch = item; }
-                }
+            const row = document.createElement('div');
+            row.className = `message-row bot-row`;
+            row.style.animation = "msg-in 0.35s var(--ease-out) forwards";
 
-                showTypingIndicator(false);
-                updateDynamicIsland('idle');
+            // Basic Bot Avatar SVG
+            let avatarMarkup = `
+<div class="msg-avatar bot-avatar-3d" style="background:var(--bg-deep); border:1px solid var(--border); width:40px; height:40px;">
+<svg class="bot-avatar-svg" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+<circle cx="40" cy="40" r="36" fill="#fbbf24"/>
+<circle cx="26" cy="32" r="4" fill="#1e293b"/>
+<circle cx="54" cy="32" r="4" fill="#1e293b"/>
+<path d="M26 48 C 26 48, 33 55, 40 55 C 47 55, 54 48, 54 48" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>
+</div>`;
 
-                if (bestMatch && maxScore > 0) {
-                    const botResponse = {
-                        role: 'bot',
-                        text: bestMatch.answer,
-                        time: Date.now(),
-                        sources: bestMatch.sources,
-                        followups: bestMatch.followups,
-                        isContactDir: bestMatch.isContactDir
-                    };
-                    appendMessageDOM(botResponse);
-                    playSound('receive');
-                    
-                    // Maintain system unique context logs pipeline cache
-                    const existsIdx = APP.history.findIndex(h => (typeof h === 'string' ? h : h.query) === query);
-                    if (existsIdx !== -1) {
-                        APP.history.splice(existsIdx, 1);
-                    }
-                    APP.history.unshift({ query: query, time: Date.now() });
-                    if (APP.history.length > 8) APP.history.pop();
-                    renderHistoryListUI();
+            row.innerHTML = `
+                ${avatarMarkup}
+                <div class="msg-bubble bot-bubble">
+                    <div class="msg-meta">OnboardBot <span class="msg-time">Just now</span></div>
+                    <div class="msg-text" id="streaming-text"></div>
+                    <div id="streaming-sources"></div>
+                    <div class="msg-actions">
+                        <button class="msg-meta-btn" title="Read aloud">Read aloud</button>
+                    </div>
+                </div>
+            `;
+            chatContainer.appendChild(row);
+            
+            showTypingIndicator(false);
+            
+            try {
+                // Fetch to real Python backend!
+                const response = await fetch('http://localhost:8080/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        company: "Nexus Technologies",
+                        message: query,
+                        history: APP.history.map(h => ({ role: typeof h === 'string' ? 'user' : 'user', content: typeof h === 'string' ? h : h.query }))
+                    })
+                });
+
+                if (!response.ok) throw new Error("API Network response was not ok");
+                if (response.headers.get('content-type')?.includes('application/json')) {
+                    const data = await response.json();
+                    msgObj.text = data.answer;
+                    document.getElementById('streaming-text').innerHTML = data.answer.replace(/\n/g, '<br>');
                 } else {
-                    // Out of Scope response logic
-                    const hrInfo = HR_CONTACTS.map(c => `* **${c.name}** (${c.role}): [${c.phone}](tel:${c.phone.replace(/\s+/g, '')})`).join('\n');
-                    appendMessageDOM({
-                        role: 'bot',
-                        text: "This query is out of context and could not be answered using our internal databases.\n\nFor further assistance, please contact our HR team directly:\n\n" + hrInfo,
-                        time: Date.now(),
-                        sources: ["Nexus Policy Directory", "IT Setup Guide", "Leave & Benefits Manual"],
-                        followups: ["Who are the key HR contacts?", "Show available commands"]
-                    });
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder('utf-8');
+                    let fullText = "";
+
+                    while (true) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+                        
+                        const chunk = decoder.decode(value, { stream: true });
+                        const lines = chunk.split('\n');
+                        for (const line of lines) {
+                            if (line.startsWith('data: ') && line !== 'data: [DONE]') {
+                                let content = line.substring(6).replace(/\\n/g, '\n');
+                                if (content.startsWith('{"sources"')) {
+                                    // Parse citations
+                                    try {
+                                        let cdata = JSON.parse(content);
+                                    } catch(e) {}
+                                } else {
+                                    fullText += content;
+                                    let htmlText = fullText.replace(/\n/g, '<br>');
+                                    htmlText = htmlText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                                    document.getElementById('streaming-text').innerHTML = htmlText;
+                                    scrollCanvasToBottom();
+                                }
+                            } else if (line.startsWith('event: citations')) {
+                                // Ignore for simple parsing
+                            }
+                        }
+                    }
+                    msgObj.text = fullText;
                 }
+                
+                playSound('receive');
+                updateDynamicIsland('idle');
+                
+                // Maintain system unique context logs pipeline cache
+                const existsIdx = APP.history.findIndex(h => (typeof h === 'string' ? h : h.query) === query);
+                if (existsIdx !== -1) APP.history.splice(existsIdx, 1);
+                APP.history.unshift({ query: query, time: Date.now() });
+                if (APP.history.length > 8) APP.history.pop();
+                renderHistoryListUI();
                 saveState();
-            }, 1200);
+
+                // Clear temporary ID
+                document.getElementById('streaming-text').removeAttribute('id');
+
+            } catch (err) {
+                console.error("Chat API error:", err);
+                document.getElementById('streaming-text').innerHTML = "Sorry, I could not connect to the backend server. Please make sure api.py is running on port 8080.";
+                updateDynamicIsland('idle');
+            }
         }
+
+        
 
         // Framework DOM Interface Render Engines Modules
         function appendMessageDOM(msg, saveToState = true) {
@@ -2049,7 +2108,7 @@
                 const isVisible = (APP.settings.showSources !== false) ? 'block' : 'none';
                 sourcesMarkup = `
                     <div class="msg-sources-block" style="margin-top:10px; padding-top:6px; border-top:1px dashed var(--border); font-size:11px; color:var(--text-dim); display:${isVisible};">
-                        📂 <strong>Referred Documents:</strong> ${msg.sources.join(' | ')}
+                         <strong>Referred Documents:</strong> ${msg.sources.join(' | ')}
                     </div>
                 `;
             }
@@ -2090,7 +2149,7 @@
                     </div>
                     <div class="msg-meta">
                         <span class="msg-time">${formatTime(msg.time)}</span>
-                        ${msg.role === 'bot' ? `<button class="msg-meta-btn btn-tts" onclick="toggleSpeechReadAloud(this, '${msg.text.replace(/'/g, "\\'")}')">🔊 Read aloud</button>` : ''}
+                        ${msg.role === 'bot' ? `<button class="msg-meta-btn btn-tts" onclick="toggleSpeechReadAloud(this, '${msg.text.replace(/'/g, "\\'")}')"> Read aloud</button>` : ''}
                     </div>
                     ${msg.role === 'bot' ? followupsMarkup : ''}
                 </div>
@@ -2226,7 +2285,7 @@
                 const btn = document.createElement('button');
                 btn.className = "recent-item-row";
                 btn.innerHTML = `
-                    <span class="recent-item-text">💬 ${queryText}</span>
+                    <span class="recent-item-text"> ${queryText}</span>
                     <span class="recent-item-time">${timeStr}</span>
                 `;
                 btn.addEventListener('click', () => {
@@ -2343,8 +2402,8 @@
                             </div>
                         </div>
                         <div class="dc-details">
-                            <div class="dc-row"><span>✉️</span><a href="mailto:${c.email}">${c.email}</a></div>
-                            <div class="dc-row"><span>📞</span><span>${c.phone}</span></div>
+                            <div class="dc-row"><span>️</span><a href="mailto:${c.email}">${c.email}</a></div>
+                            <div class="dc-row"><span></span><span>${c.phone}</span></div>
                         </div>
                         <button class="cc-contact-btn" onclick="window.open('mailto:${c.email}')">Ping Corporate Member</button>
                     `;
@@ -2371,7 +2430,7 @@
                         card.innerHTML = `
                             <div class="hr-number-name">${c.name}</div>
                             <div class="hr-number-role">${c.role}</div>
-                            <a href="tel:${c.phone.replace(/\s+/g, '')}" class="hr-number-link">📞 ${c.phone}</a>
+                            <a href="tel:${c.phone.replace(/\s+/g, '')}" class="hr-number-link"> ${c.phone}</a>
                         `;
                         list.appendChild(card);
                     });
@@ -2496,40 +2555,47 @@
                             <path d="M26 48 C 26 48, 33 55, 40 55 C 47 55, 54 48, 54 48" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none"/>
                         </svg>
                     </div>
-                    <div class="thinking-bubble-indicator">💭</div>
+                    <div class="thinking-bubble-indicator"></div>
                 </div>
-                <h1 class="welcome-brand" style="color: var(--accent); font-size: 2.2rem; font-weight: 700; margin-bottom: 8px;">OnboardBot</h1>
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 15px;">
+    <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 4px 6px rgba(16, 185, 129, 0.2));">
+      <path d="M 15 50 Q 32.5 10, 50 50 T 85 50" stroke="#10b981" stroke-width="12" stroke-linecap="round" fill="none"/>
+      <circle cx="15" cy="50" r="10" fill="#10b981" />
+      <circle cx="85" cy="50" r="10" fill="#10b981" />
+    </svg>
+    <h1 class="welcome-brand" style="color: #10b981; font-size: 2.8rem; font-weight: 800; letter-spacing: 2px; margin-top: 5px; margin-bottom: 0;">NEXUS</h1>
+</div>
                 <p class="welcome-greeting">${getGreeting()}<br><span style="color:var(--text-dim); font-size:0.95rem;">Your guide to life at Nexus Technologies</span></p>
 
                 <div class="welcome-cards">
                     <div class="welcome-card" data-query="Tell me about company policies, dress code, and code of conduct">
-                        <div class="card-icon-badge">📋</div>
-                        <h3 class="wc-title">Company Policies</h3>
+                        <div class="card-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+<h3 class="wc-title">Company Policies</h3>
                         <p class="wc-desc">Dress code, conduct, values & reviews</p>
                     </div>
                     <div class="welcome-card" data-query="How do I set up my laptop, VPN, email, and Slack workspace?">
-                        <div class="card-icon-badge">💻</div>
-                        <h3 class="wc-title">IT Setup Guide</h3>
+                        <div class="card-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+<h3 class="wc-title">IT Setup Guide</h3>
                         <p class="wc-desc">Laptop, VPN, email, Slack & 2FA</p>
                     </div>
                     <div class="welcome-card" data-query="What are the leave types, holiday calendar, and attendance policies?">
-                        <div class="card-icon-badge">🏖️</div>
-                        <h3 class="wc-title">Leave & Attendance</h3>
+                        <div class="card-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
+<h3 class="wc-title">Leave & Attendance</h3>
                         <p class="wc-desc">Leave types, holidays & applications</p>
                     </div>
                     <div class="welcome-card" data-query="Show me information about health insurance, payroll, PF, and benefits">
-                        <div class="card-icon-badge">💰</div>
-                        <h3 class="wc-title">Benefits & Payroll</h3>
+                        <div class="card-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg></div>
+<h3 class="wc-title">Benefits & Payroll</h3>
                         <p class="wc-desc">Insurance, PF, wellness programs</p>
                     </div>
                     <div class="welcome-card" data-query="Who are the key HR contacts I should know? Show me the directory.">
-                        <div class="card-icon-badge">📞</div>
-                        <h3 class="wc-title">HR Contacts</h3>
+                        <div class="card-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+<h3 class="wc-title">HR Contacts</h3>
                         <p class="wc-desc">Reach the right person quickly</p>
                     </div>
                     <div class="welcome-card" data-query="What can you help me with? Show your available commands.">
-                        <div class="card-icon-badge">❓</div>
-                        <h3 class="wc-title">Help & Commands</h3>
+                        <div class="card-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div>
+<h3 class="wc-title">Help & Commands</h3>
                         <p class="wc-desc">See what I can do</p>
                     </div>
                 </div>
@@ -2662,7 +2728,7 @@
                         updateDynamicIsland('idle');
                         const botResponse = {
                             role: 'bot',
-                            text: `📎 **File Ingested**: \`${file.name}\` (${(file.size / 1024).toFixed(1)} KB / \`${file.type || 'unknown type'}\`)\n\nThe contents have been successfully parsed and indexed into the corporate vector repository. You can now ask questions about the policies and data within this file.`,
+                            text: ` **File Ingested**: \`${file.name}\` (${(file.size / 1024).toFixed(1)} KB / \`${file.type || 'unknown type'}\`)\n\nThe contents have been successfully parsed and indexed into the corporate vector repository. You can now ask questions about the policies and data within this file.`,
                             time: Date.now(),
                             sources: ["Local File System Ingest Node"],
                             followups: ["Verify document indexing", "Summarize attached document"]
@@ -2700,7 +2766,14 @@
                                 <path d="M24 46C24 46 29 51 36 51C43 51 48 46 48 46" stroke="var(--text-primary)" stroke-width="2.5" stroke-linecap="round"/>
                             </svg>
                         </div>
-                        <h1 class="welcome-brand" style="color: var(--accent); font-size: 2.2rem; font-weight: 700; margin-bottom: 8px;">OnboardBot</h1>
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 15px;">
+    <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 4px 6px rgba(16, 185, 129, 0.2));">
+      <path d="M 15 50 Q 32.5 10, 50 50 T 85 50" stroke="#10b981" stroke-width="12" stroke-linecap="round" fill="none"/>
+      <circle cx="15" cy="50" r="10" fill="#10b981" />
+      <circle cx="85" cy="50" r="10" fill="#10b981" />
+    </svg>
+    <h1 class="welcome-brand" style="color: #10b981; font-size: 2.8rem; font-weight: 800; letter-spacing: 2px; margin-top: 5px; margin-bottom: 0;">NEXUS</h1>
+</div>
                         <p class="welcome-greeting">${getGreeting()}<br><span style="color:var(--text-dim); font-size:0.95rem;">Your guide to life at Nexus Technologies</span></p>
                     `;
                     chatContainer.appendChild(mainWelcomeBlock);
@@ -2928,7 +3001,7 @@
                     const details = achievementDetails[id];
                     if (details) {
                         const isUnlocked = box.classList.contains('unlocked');
-                        const statusText = isUnlocked ? "🟢 Unlocked" : "🔒 Locked";
+                        const statusText = isUnlocked ? " Unlocked" : " Locked";
                         showToast(`${statusText} | **${details.title}**: ${details.desc}`, isUnlocked ? "success" : "info");
                     }
                 });
@@ -3045,7 +3118,7 @@
 
                     // Analyze queries and generate summary
                     const queries = APP.messages.filter(m => m.role === 'user').map(m => m.text);
-                    let summaryText = "📝 **Conversation Summary**:\n\nWe have discussed the following onboarding aspects today:\n";
+                    let summaryText = " **Conversation Summary**:\n\nWe have discussed the following onboarding aspects today:\n";
                     if (queries.length > 0) {
                         const uniqueQueries = [...new Set(queries)];
                         uniqueQueries.forEach((q, idx) => {

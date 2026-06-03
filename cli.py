@@ -7,6 +7,17 @@ Usage:
 """
 
 import sys
+# Reconfigure standard output/error to utf-8 to avoid UnicodeEncodeError on Windows
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+if hasattr(sys.stderr, "reconfigure"):
+    try:
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
 from pathlib import Path
 
 # Add project root to path

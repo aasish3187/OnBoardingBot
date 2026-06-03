@@ -22,6 +22,14 @@ pypdf>=4.0.0
 # UI
 streamlit>=1.38.0
 
+# Text splitting
+langchain-text-splitters>=0.3.0
+
+# API Backend
+fastapi>=0.100.0
+uvicorn>=0.23.0
+
 # Utilities
 rich>=13.0.0
 python-dotenv>=1.0.0
+requests>=2.31.0

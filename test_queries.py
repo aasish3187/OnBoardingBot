@@ -8,6 +8,17 @@ Usage:
 """
 
 import sys
+# Reconfigure standard output/error to utf-8 to avoid UnicodeEncodeError on Windows
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+if hasattr(sys.stderr, "reconfigure"):
+    try:
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
 import time
 from pathlib import Path
 
@@ -112,7 +123,7 @@ def run_tests():
     """Execute all test queries and report results."""
     
     print("\n" + "=" * 70)
-    print("  🧪 OnboardBot — Test Suite")
+    print("  [Test Suite] OnboardBot - Test Suite")
     print("  Running 10 in-scope + 3 out-of-scope queries")
     print("=" * 70)
     
@@ -121,11 +132,11 @@ def run_tests():
         vector_store = load_vector_store()
         llm = get_llm()
     except FileNotFoundError as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\n[Error] {e}")
         print("Run 'python ingest.py' first to set up the vector store.")
         sys.exit(1)
     except Exception as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\n[Error] {e}")
         print("Make sure Ollama is running: 'ollama serve'")
         sys.exit(1)
     
@@ -136,10 +147,10 @@ def run_tests():
         "out_of_scope_fail": 0,
     }
     
-    # ── In-Scope Tests ──
-    print(f"\n{'─' * 70}")
-    print(f"  📗 IN-SCOPE QUERIES (10 tests)")
-    print(f"{'─' * 70}")
+    # -- In-Scope Tests --
+    print(f"\n{'-' * 70}")
+    print(f"  IN-SCOPE QUERIES (10 tests)")
+    print(f"{'-' * 70}")
     
     for test in IN_SCOPE_QUERIES:
         print(f"\n  Test #{test['id']}: {test['query']}")
@@ -167,7 +178,7 @@ def run_tests():
         
         if passed:
             results["in_scope_pass"] += 1
-            print(f"  ✅ PASS ({elapsed:.1f}s)")
+            print(f"  PASS ({elapsed:.1f}s)")
         else:
             results["in_scope_fail"] += 1
             reasons = []
@@ -177,16 +188,16 @@ def run_tests():
                 reasons.append(f"missing keywords: {test['expected_keywords']}")
             if not no_denial:
                 reasons.append("incorrectly denied having info")
-            print(f"  ❌ FAIL ({elapsed:.1f}s) — {'; '.join(reasons)}")
+            print(f"  FAIL ({elapsed:.1f}s) - {'; '.join(reasons)}")
         
         # Show snippet of answer
         snippet = result["answer"][:150].replace("\n", " ")
         print(f"     Answer: {snippet}...")
     
-    # ── Out-of-Scope Tests ──
-    print(f"\n{'─' * 70}")
-    print(f"  📙 OUT-OF-SCOPE QUERIES (3 tests)")
-    print(f"{'─' * 70}")
+    # -- Out-of-Scope Tests --
+    print(f"\n{'-' * 70}")
+    print(f"  OUT-OF-SCOPE QUERIES (3 tests)")
+    print(f"{'-' * 70}")
     
     for test in OUT_OF_SCOPE_QUERIES:
         print(f"\n  Test #{test['id']}: {test['query']}")
@@ -208,18 +219,18 @@ def run_tests():
         
         if is_oos:
             results["out_of_scope_pass"] += 1
-            print(f"  ✅ PASS ({elapsed:.1f}s) — Correctly identified as out-of-scope")
+            print(f"  PASS ({elapsed:.1f}s) - Correctly identified as out-of-scope")
         else:
             results["out_of_scope_fail"] += 1
-            print(f"  ❌ FAIL ({elapsed:.1f}s) — Incorrectly answered (should be out-of-scope)")
+            print(f"  FAIL ({elapsed:.1f}s) - Incorrectly answered (should be out-of-scope)")
         
         # Show snippet of answer
         snippet = result["answer"][:150].replace("\n", " ")
         print(f"     Answer: {snippet}...")
     
-    # ── Summary ──
+    # -- Summary --
     print(f"\n{'=' * 70}")
-    print(f"  📊 TEST RESULTS SUMMARY")
+    print(f"  TEST RESULTS SUMMARY")
     print(f"{'=' * 70}")
     
     total_pass = results["in_scope_pass"] + results["out_of_scope_pass"]
@@ -228,13 +239,13 @@ def run_tests():
     
     print(f"\n  In-Scope Queries:     {results['in_scope_pass']}/10 passed")
     print(f"  Out-of-Scope Queries: {results['out_of_scope_pass']}/3 passed")
-    print(f"  {'─' * 40}")
+    print(f"  {'-' * 40}")
     print(f"  Total:                {total_pass}/{total} passed ({total_pass/total*100:.0f}%)")
     
     if total_fail == 0:
-        print(f"\n  🎉 ALL TESTS PASSED!")
+        print(f"\n  ALL TESTS PASSED!")
     else:
-        print(f"\n  ⚠️  {total_fail} test(s) failed. Review the results above.")
+        print(f"\n  {total_fail} test(s) failed. Review the results above.")
     
     print(f"\n{'=' * 70}\n")
     

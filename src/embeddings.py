@@ -1,7 +1,7 @@
-"""
-OnboardBot — HuggingFace Embeddings Setup
-Singleton pattern to initialize the embedding model once and reuse.
-"""
+import os
+# Force offline mode to prevent network requests from hanging on Windows
+os.environ["HF_HUB_OFFLINE"] = "1"
+os.environ["TRANSFORMERS_OFFLINE"] = "1"
 
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from src.config import EMBEDDING_MODEL
@@ -21,13 +21,13 @@ def get_embeddings() -> HuggingFaceEmbeddings:
     global _embeddings_instance
     
     if _embeddings_instance is None:
-        print(f"🔄 Loading embedding model: {EMBEDDING_MODEL}...")
+        print(f"Loading embedding model: {EMBEDDING_MODEL}...")
         _embeddings_instance = HuggingFaceEmbeddings(
             model_name=EMBEDDING_MODEL,
             model_kwargs={"device": "cpu"},
             encode_kwargs={"normalize_embeddings": True},
         )
-        print(f"✅ Embedding model loaded successfully!")
+        print(f"Embedding model loaded successfully!")
     
     return _embeddings_instance
 
@@ -43,8 +43,8 @@ def get_reranker():
     global _reranker_instance
     if _reranker_instance is None:
         from sentence_transformers import CrossEncoder
-        print("🔄 Loading Cross-Encoder reranker (ms-marco-MiniLM-L-6-v2)...")
+        print("Loading Cross-Encoder reranker (ms-marco-MiniLM-L-6-v2)...")
         _reranker_instance = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2", device="cpu")
-        print("✅ Reranker model loaded successfully!")
+        print("Reranker model loaded successfully!")
     return _reranker_instance
 

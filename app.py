@@ -8,8 +8,20 @@ Usage:
 """
 
 import sys
+# Reconfigure standard output/error to utf-8 to avoid UnicodeEncodeError on Windows
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+if hasattr(sys.stderr, "reconfigure"):
+    try:
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
 import uuid
 import threading
+import time
 from pathlib import Path
 from datetime import datetime
 
@@ -26,6 +38,8 @@ from src.config import (
     APP_NAME,
     APP_VERSION,
     DATA_DIR,
+    SYSTEM_PROMPT,
+    get_dynamic_system_prompt,
 )
 from src.vector_store import load_vector_store, get_vector_store_stats
 from src.rag_chain import (
@@ -38,6 +52,7 @@ from src.rag_chain import (
     delete_document_from_store,
 )
 from src.hr_contacts import HR_CONTACTS, get_all_contacts_formatted
+from src.company_engine import CompanyKnowledgeBase
 
 # Import Hugging Face Client Layer
 from src.hf_client import (
@@ -132,6 +147,18 @@ if "last_raw_chroma_docs" not in st.session_state:
     st.session_state.last_raw_chroma_docs = []
 if "selected_workspace" not in st.session_state:
     st.session_state.selected_workspace = "Nexus Onboarding Vault"
+
+# Company selection states (real-time MNC mode)
+if "company_selected" not in st.session_state:
+    st.session_state.company_selected = False
+if "company_name" not in st.session_state:
+    st.session_state.company_name = ""
+if "company_info" not in st.session_state:
+    st.session_state.company_info = {}
+if "company_vector_store" not in st.session_state:
+    st.session_state.company_vector_store = None
+if "company_kb" not in st.session_state:
+    st.session_state.company_kb = CompanyKnowledgeBase()
 
 # Accessibility States
 if "dyslexia_mode" not in st.session_state:
@@ -324,18 +351,18 @@ st.markdown(f"""
         }}
         /* User message text color fix */
         div[data-testid="stChatMessage"][class*="user"],
-        div[data-testid="stChatMessage"][class*="user"] [data-testid="stChatMessageContent"] {
+        div[data-testid="stChatMessage"][class*="user"] [data-testid="stChatMessageContent"] {{
             color: #FFFFFF !important;
             background: {user_bubble_gradient} !important;
             border: 1px solid rgba(255, 255, 255, 0.15) !important;
             border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
-        }
+        }}
         div[data-testid="stChatMessage"][class*="user"] [data-testid="stChatMessageContent"] p,
         div[data-testid="stChatMessage"][class*="user"] [data-testid="stChatMessageContent"] li,
         div[data-testid="stChatMessage"][class*="user"] [data-testid="stChatMessageContent"] span,
-        div[data-testid="stChatMessage"][class*="user"] [data-testid="stChatMessageContent"] strong {
+        div[data-testid="stChatMessage"][class*="user"] [data-testid="stChatMessageContent"] strong {{
             color: #FFFFFF !important;
-        }
+        }}
         /* Form background & border override */
         div[data-testid="stForm"] {{
             background: rgba(255, 255, 255, 0.55) !important;
@@ -1473,6 +1500,150 @@ if not st.session_state.logged_in:
 
 
 # ============================================================================
+# COMPANY SELECTION SCREEN (Real-Time MNC Mode)
+# ============================================================================
+if not st.session_state.company_selected:
+    # Inject centering CSS for company selection
+    st.markdown("""
+    <style>
+        div.block-container {
+            max-width: 700px !important;
+            padding-top: 2rem !important;
+            margin: auto !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown(f"""
+    <div class="royal-card" style="text-align: center; border-top: 3.5px solid var(--accent-primary); padding: 1.8rem !important;">
+        <div class="tech-logo-node" style="width: 70px; height: 70px;">
+            <div class="tech-logo-inner" style="width: 55px; height: 55px; margin: auto;">{SVG_LOGO}</div>
+        </div>
+        <h2 style='margin: 0; font-size: 1.8rem; font-family: "Space Grotesk", sans-serif; color: var(--concierge-white);'>
+            OnboardBot — Real-Time Mode
+        </h2>
+        <p style='color: var(--concierge-silver); font-size: 0.9rem; margin-top: 0.4rem; margin-bottom: 0;'>
+            Enter any MNC company name to get a <strong>real-time onboarding assistant</strong>
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Company search input
+    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+
+    # Popular companies grid
+    st.markdown("<h4 style='color:var(--accent-primary); font-family:\"Space Grotesk\", sans-serif; margin-bottom:0.6rem;'>🏢 Popular Companies (Quick Select)</h4>", unsafe_allow_html=True)
+
+    popular_companies = [
+        ("Google", "🔍", "Tech Giant"),
+        ("Microsoft", "🪟", "Software & Cloud"),
+        ("Amazon", "📦", "E-commerce & AWS"),
+        ("TCS", "💼", "IT Services"),
+        ("Infosys", "🔷", "IT Consulting"),
+        ("Meta", "📱", "Social & AI"),
+        ("Apple", "🍎", "Consumer Tech"),
+        ("Wipro", "🌐", "IT Services"),
+        ("Accenture", "🔺", "Consulting"),
+        ("Deloitte", "📊", "Professional Services"),
+    ]
+
+    # Render in 5 columns
+    cols = st.columns(5)
+    for i, (name, icon, desc) in enumerate(popular_companies):
+        with cols[i % 5]:
+            if st.button(f"{icon} {name}", key=f"quick_company_{name}", use_container_width=True, help=desc):
+                st.session_state.company_name = name
+                # Will be processed below
+
+    st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color:var(--accent-primary); font-family:\"Space Grotesk\", sans-serif; margin-bottom:0.4rem;'>✏️ Or Enter Any Company Name</h4>", unsafe_allow_html=True)
+
+    with st.form("company_select_form"):
+        custom_company = st.text_input(
+            "Company Name",
+            placeholder="e.g. Google, TCS, Infosys, Microsoft, IBM, SAP...",
+            label_visibility="collapsed"
+        )
+        submitted = st.form_submit_button("🚀 Launch OnboardBot for this Company", use_container_width=True)
+        if submitted and custom_company.strip():
+            st.session_state.company_name = custom_company.strip()
+
+    # Also allow using the original Nexus Technologies demo
+    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    if st.button("🏛️ Use Original Demo (Nexus Technologies)", use_container_width=True, help="Use the built-in Nexus Technologies dataset"):
+        st.session_state.company_selected = True
+        st.session_state.company_name = "Nexus Technologies Pvt. Ltd."
+        st.session_state.company_info = {
+            "full_name": "Nexus Technologies Pvt. Ltd.",
+            "industry": "Enterprise Software, Cloud, AI",
+            "founded": "2012",
+            "headquarters": "Hyderabad, India",
+            "ceo": "Rajesh Kumar",
+            "employees": "2,500+",
+            "source": "built_in",
+        }
+        st.session_state.company_vector_store = None  # Will use default
+        st.rerun()
+
+    # Process company selection if a name was set
+    if st.session_state.company_name and not st.session_state.company_selected:
+        company_name = st.session_state.company_name
+
+        st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="royal-card" style="border-left: 4px solid var(--accent-primary); padding: 1.2rem !important;">
+            <h4 style="margin:0; font-size:1.1rem;">🔄 Building Knowledge Base for <strong>{company_name}</strong></h4>
+            <p style="margin:0.3rem 0 0; font-size:0.85rem; color:var(--concierge-silver);">Fetching company data and generating onboarding documents in real-time...</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        progress_bar = st.progress(0, text="Initializing...")
+        status_text = st.empty()
+
+        def progress_callback(message, progress):
+            progress_bar.progress(min(progress, 1.0), text=message)
+            status_text.caption(f"⏳ {message}")
+
+        try:
+            # Initialize LLM for document generation
+            llm = get_llm(temperature=0.7, num_predict=4096)
+
+            # Build company knowledge base in real-time
+            company_vs, company_info = st.session_state.company_kb.get_or_create(
+                company_name,
+                llm=llm,
+                progress_callback=progress_callback,
+            )
+
+            st.session_state.company_selected = True
+            st.session_state.company_info = company_info
+            st.session_state.company_vector_store = company_vs
+
+            progress_bar.progress(1.0, text="✅ Ready!")
+            status_text.empty()
+
+            st.success(f"✅ **{company_info.get('full_name', company_name)}** knowledge base is ready! Launching OnboardBot...")
+            time.sleep(1)
+            st.rerun()
+
+        except Exception as e:
+            progress_bar.empty()
+            status_text.empty()
+            st.error(f"❌ Failed to build knowledge base: {e}")
+            st.session_state.company_name = ""
+
+    # Show cached companies
+    cached = st.session_state.company_kb.list_cached_companies()
+    if cached:
+        st.markdown("<div style='height: 15px;'></div>", unsafe_allow_html=True)
+        st.markdown("<span style='font-size:0.75rem; color:var(--concierge-silver); font-weight:600; letter-spacing:0.05em;'>PREVIOUSLY LOADED COMPANIES</span>", unsafe_allow_html=True)
+        for c in cached:
+            st.markdown(f"<span style='font-size:0.8rem; color:var(--concierge-white);'>📁 {c}</span>", unsafe_allow_html=True)
+
+    st.stop()
+
+
+# ============================================================================
 # TEMPORARY FILE UPLOADS CLEANER ON LOGOUT
 # ============================================================================
 def perform_logout():
@@ -1492,6 +1663,10 @@ def perform_logout():
     st.session_state.temp_files = []
     st.session_state.past_queries_vectors = []
     st.session_state.duplicate_alert = None
+    st.session_state.company_selected = False
+    st.session_state.company_name = ""
+    st.session_state.company_info = {}
+    st.session_state.company_vector_store = None
     st.rerun()
 
 
@@ -1499,6 +1674,10 @@ def perform_logout():
 # SIDEBAR — INTELLIGENT CONCIERGE PANEL
 # ============================================================================
 with st.sidebar:
+    # Get active company name for display
+    active_company = st.session_state.company_info.get("full_name", st.session_state.company_name or "OnboardBot")
+    active_company_short = active_company[:20] + "..." if len(active_company) > 20 else active_company
+
     st.markdown(f"""
     <div style="padding: 0.5rem 0 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center;">
         <div style="width: 44px; height: 44px; margin: 0 auto 0.5rem; filter: drop-shadow(0 0 8px var(--accent-primary));">{SVG_LOGO}</div>
@@ -1506,6 +1685,36 @@ with st.sidebar:
         <p style="margin: 0; font-size: 0.72rem; color: var(--accent-primary); font-weight: 700; letter-spacing: 0.05em;">EXECUTIVE PORTAL</p>
     </div>
     """, unsafe_allow_html=True)
+
+    # Company Info Card
+    c_info = st.session_state.company_info
+    if c_info:
+        st.markdown(f"""
+        <div class="royal-card" style="border-top: 3px solid var(--accent-primary); padding: 0.8rem !important; margin-bottom: 0.8rem !important;">
+            <div style="font-size: 0.65rem; color: var(--accent-primary); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.4rem;">ACTIVE COMPANY</div>
+            <p style="font-size: 0.95rem; font-weight: 700; margin: 0; color: var(--concierge-white);">🏢 {active_company_short}</p>
+            <p style="font-size: 0.7rem; color: var(--concierge-silver); margin: 0.2rem 0;">{c_info.get('industry', 'N/A')}</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem; margin-top: 0.5rem;">
+                <div style="font-size: 0.65rem; color: var(--concierge-silver);">📍 {c_info.get('headquarters', 'Global')}</div>
+                <div style="font-size: 0.65rem; color: var(--concierge-silver);">👥 {c_info.get('employees', 'N/A')}</div>
+                <div style="font-size: 0.65rem; color: var(--concierge-silver);">📅 Est. {c_info.get('founded', 'N/A')}</div>
+                <div style="font-size: 0.65rem; color: var(--concierge-silver);">👤 {c_info.get('ceo', 'N/A')}</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    # Switch Company button
+    if st.button("🔄 Switch Company", use_container_width=True, help="Select a different company"):
+        st.session_state.company_selected = False
+        st.session_state.company_name = ""
+        st.session_state.company_info = {}
+        st.session_state.company_vector_store = None
+        st.session_state.messages = []
+        st.session_state.follow_ups = []
+        st.session_state.duplicate_alert = None
+        st.rerun()
+
+    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
     
     # Workspace selector (Chatbot UI Style)
     st.markdown("<span style='font-size: 0.75rem; color: var(--concierge-silver); font-weight: 600; letter-spacing: 0.05em;'>WORKSPACE</span>", unsafe_allow_html=True)
@@ -1673,6 +1882,7 @@ with chat_col:
         greeting_name = st.session_state.username if st.session_state.username else "esteemed guest"
         hour = datetime.now().hour
         time_greeting = "Good morning" if hour < 12 else ("Good afternoon" if hour < 17 else "Good evening")
+        display_company = st.session_state.company_info.get("full_name", st.session_state.company_name or "your organization")
         
         st.markdown(f"""
         <div class="royal-card fade-up-chat" style="padding: 2.2rem !important; border-top: 3px solid var(--accent-primary);">
@@ -1680,9 +1890,9 @@ with chat_col:
                 👋 {time_greeting}, {greeting_name}!
             </h3>
             <p style='color: var(--concierge-silver); font-size: 0.95rem; line-height: 1.7; margin: 0.6rem 0 0;'>
-                Welcome to the premium concierge service at <strong>Nexus Technologies</strong>. As your dedicated digital assistant, 
-                I am prepared to guide you through our corporate policy frameworks, IT setups, and insurance schemes. 
-                All insights are verified directly from our official document knowledge vault.
+                Welcome to the premium concierge service for <strong>{display_company}</strong>. As your dedicated digital assistant, 
+                I am prepared to guide you through company policies, IT setups, leave management, and employee benefits. 
+                All insights are generated from our real-time knowledge base.
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -1947,31 +2157,42 @@ with chat_col:
             # Ingest and initialize vector store & LLM
             ensure_bot_ready(temperature=temperature_val, max_tokens=max_tokens_val)
             
+            # Determine which vector store to use (company-specific or default)
+            active_vs = st.session_state.company_vector_store if st.session_state.company_vector_store else st.session_state.vector_store
+            
+            # Build company-aware system prompt
+            active_company_name = st.session_state.company_info.get("full_name", st.session_state.company_name or "Nexus Technologies")
+            base_system_prompt = get_dynamic_system_prompt(active_company_name) if st.session_state.company_vector_store else SYSTEM_PROMPT
+            
             # Specialist System Prompt override
             persona = st.session_state.get("specialist_persona", "Nexus Guide")
             sys_prompt_override = None
             if persona == "HR Policy Expert":
-                sys_prompt_override = SYSTEM_PROMPT + "\n\n" + (
+                sys_prompt_override = base_system_prompt + "\n\n" + (
                     "You are in 'HR Policy Expert' mode. Answer with extreme precision, citing exact document names and guidelines. "
                     "Be formal, structured, and thorough. Present policy details clearly and exhaustively."
                 )
             elif persona == "Tech Ninja":
-                sys_prompt_override = SYSTEM_PROMPT + "\n\n" + (
+                sys_prompt_override = base_system_prompt + "\n\n" + (
                     "You are in 'Tech Ninja' mode. Keep answers extremely brief, concise, and direct. Focus purely on technical setups, "
                     "commands, links, and step-by-step action items. Use bullet points and bold keywords for maximum speed of reading."
                 )
             elif persona == "Empathetic Guide":
-                sys_prompt_override = SYSTEM_PROMPT + "\n\n" + (
+                sys_prompt_override = base_system_prompt + "\n\n" + (
                     "You are in 'Empathetic Guide' mode. Speak with a warm, welcoming, and highly supportive tone. Encourage the new hire, "
                     "explain details gently, and show empathy for the onboarding process."
                 )
+            else:
+                # For default persona, use the company-aware prompt as override
+                if st.session_state.company_vector_store:
+                    sys_prompt_override = base_system_prompt
                 
             # Execute query and measure latency
             import time
             start_time = time.time()
             
             is_in_scope, immediate_answer, stream_generator, retrieved_docs, raw_chroma_docs = query_rag_stream(
-                vector_store=st.session_state.vector_store,
+                vector_store=active_vs,
                 question=prompt,
                 chat_history=st.session_state.messages[:-1],
                 relevance_threshold=threshold_val,
@@ -2047,7 +2268,8 @@ with chat_col:
         st.rerun()
 
     # Chat Input Box
-    user_prompt = st.chat_input("Ask anything about Nexus Technologies onboarding...")
+    chat_company = st.session_state.company_info.get("full_name", st.session_state.company_name or "your company")
+    user_prompt = st.chat_input(f"Ask anything about {chat_company} onboarding...")
     if user_prompt:
         prompt_intent = classify_intent(user_prompt)
         st.session_state.messages.append({

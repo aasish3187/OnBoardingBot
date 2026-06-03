@@ -25,7 +25,7 @@ def create_vector_store(documents: List[Document]) -> Chroma:
     """
     embeddings = get_embeddings()
     
-    print(f"\n🗄️  Creating vector store with {len(documents)} chunks...")
+    print(f"\n[Vector Store] Creating vector store with {len(documents)} chunks...")
     print(f"   Persist directory: {CHROMA_DB_DIR}")
     print(f"   Collection name: {COLLECTION_NAME}")
     
@@ -40,7 +40,7 @@ def create_vector_store(documents: List[Document]) -> Chroma:
     collection = vector_store._collection
     count = collection.count()
     
-    print(f"✅ Vector store created successfully!")
+    print(f"Vector store created successfully!")
     print(f"   Total vectors stored: {count}")
     
     return vector_store
@@ -71,7 +71,7 @@ def load_vector_store() -> Chroma:
     )
     
     count = vector_store._collection.count()
-    print(f"✅ Vector store loaded: {count} vectors in collection '{COLLECTION_NAME}'")
+    print(f"Vector store loaded: {count} vectors in collection '{COLLECTION_NAME}'")
     
     return vector_store
 

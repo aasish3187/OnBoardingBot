@@ -364,15 +364,14 @@ def condense_question(
     if not chat_history or len(chat_history) < 2:
         return question
         
-    # Speed Optimization: Bypass LLM condensation if the question is standalone/long and has no reference pronouns
+    # Speed Optimization: Bypass LLM condensation if the question contains no reference pronouns or phrases
     q_lower = question.lower()
-    pronouns = {"it", "that", "this", "them", "those", "they", "he", "she", "him", "her", "his", "hers", "their", "theirs", "what about", "how to"}
-    words = q_lower.split()
+    pronouns = {"it", "that", "this", "them", "those", "they", "he", "she", "him", "her", "his", "hers", "their", "theirs", "more", "then", "there", "here"}
+    words = set(q_lower.split())
     
-    # If the question has 6 or more words and doesn't contain reference pronouns, it is likely already standalone.
-    # Bypassing the second LLM call saves 3-8 seconds of latency.
-    has_pronoun = any(w in pronouns for w in words)
-    if len(words) >= 6 and not has_pronoun:
+    # Check for pronouns or key relational phrases
+    has_pronoun = any(p in pronouns for p in words) or any(phrase in q_lower for phrase in ["what about", "how to", "tell me", "show me"])
+    if not has_pronoun:
         return question
         
     if llm is None:
