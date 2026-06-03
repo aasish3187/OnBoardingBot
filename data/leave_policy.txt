@@ -1,0 +1,448 @@
+================================================================================
+                        NEXUS TECHNOLOGIES PVT. LTD.
+                         LEAVE & ATTENDANCE POLICY
+                              Version 4.1
+================================================================================
+
+                         HR DEPARTMENT — OFFICIAL POLICY DOCUMENT
+
+================================================================================
+TABLE OF CONTENTS
+================================================================================
+
+1. Introduction & Scope
+2. Types of Leave
+3. Leave Accrual & Balance
+4. Leave Application Process
+5. Manager Approval Workflow
+6. Public Holidays Calendar 2025
+7. Leave Carry-Forward & Encashment Rules
+8. Special Leave Provisions
+9. Unauthorized Absence & Consequences
+10. Attendance & Time Tracking
+11. Leave Management Desk Contact Information
+
+================================================================================
+CHAPTER 1: INTRODUCTION & SCOPE
+================================================================================
+
+This Leave & Attendance Policy applies to all full-time employees of Nexus
+Technologies Pvt. Ltd., effective from January 1, 2025. Contract employees
+and interns have separate leave policies communicated at the time of joining.
+
+The objective of this policy is to:
+- Provide clear guidelines on leave entitlements and procedures
+- Ensure fair and consistent application of leave rules across the organization
+- Support work-life balance while maintaining business continuity
+- Comply with applicable labor laws and regulations
+
+This policy supersedes all previous versions of the leave policy. In case
+of any conflict between this policy and applicable law, the law shall prevail.
+
+================================================================================
+CHAPTER 2: TYPES OF LEAVE
+================================================================================
+
+Nexus Technologies provides the following categories of leave to all
+eligible full-time employees:
+
+2.1 CASUAL LEAVE (CL)
+- Entitlement: 12 days per calendar year
+- Purpose: Personal errands, family events, minor illness, emergencies
+- Maximum consecutive days: 3 days
+- Can be taken as half-day (first half: 9 AM - 1 PM, second half: 2 PM - 6 PM)
+- Not applicable during probation period (first 90 days)
+- Cannot be combined with other leave types (except public holidays)
+
+2.2 SICK LEAVE (SL)
+- Entitlement: 12 days per calendar year
+- Purpose: Employee illness, medical appointments, recovery
+- Medical certificate required for sick leave exceeding 2 consecutive days
+- Can be taken without prior approval (inform manager by 9:30 AM)
+- Available from Day 1 of employment
+- Cannot be used for family member's illness (use Casual Leave)
+
+2.3 EARNED LEAVE / PRIVILEGE LEAVE (EL/PL)
+- Entitlement: 15 days per calendar year
+- Purpose: Planned vacations, extended personal time off
+- Accrual: 1.25 days per month, available after completion of probation
+- Must be applied at least 7 days in advance for 1-3 day requests
+- Must be applied at least 15 days in advance for requests of 4+ days
+- Maximum consecutive days: 10 days (exceptions approved by Department Head)
+- Can be combined with public holidays and weekends
+
+2.4 COMPENSATORY OFF (COMP OFF)
+- Earned when an employee works on a public holiday or weekend
+- Must be availed within 30 days of earning
+- Prior approval from manager required for weekend/holiday work
+- Maximum accumulation: 3 comp-offs at any time
+- Expires if not used within the 30-day window
+
+2.5 MATERNITY LEAVE
+- Entitlement: 26 weeks (182 days) for first two children
+- 12 weeks (84 days) for third child onwards
+- Applicable to female employees who have worked for at least 80 days
+  in the 12 months preceding the expected delivery date
+- Fully paid leave as per the Maternity Benefit (Amendment) Act, 2017
+- Can be availed up to 8 weeks before the expected delivery date
+- Includes prenatal and postnatal care
+- Work-from-home option available for 4 weeks after returning from
+  maternity leave
+
+2.6 PATERNITY LEAVE
+- Entitlement: 15 days
+- Applicable within 6 months of the child's birth or adoption
+- Can be taken in a single stretch or in two parts
+- Fully paid leave
+- Available for up to 2 children
+
+2.7 BEREAVEMENT LEAVE
+- Entitlement: 5 days for immediate family (spouse, children, parents,
+  siblings)
+- 3 days for extended family (grandparents, in-laws, close relatives)
+- No advance notice required — inform manager as soon as possible
+- Fully paid leave
+
+2.8 MARRIAGE LEAVE
+- Entitlement: 5 days
+- Available once during employment tenure
+- Must be availed within 1 month of the marriage date
+- Marriage invitation or certificate to be submitted to HR
+
+================================================================================
+CHAPTER 3: LEAVE ACCRUAL & BALANCE
+================================================================================
+
+ACCRUAL RULES:
+- Casual Leave: Credited in full on January 1st each year. For mid-year
+  joiners, leaves are pro-rated based on the month of joining.
+- Sick Leave: Credited in full on January 1st each year. Pro-rated for
+  mid-year joiners.
+- Earned Leave: Accrues at 1.25 days per completed month of service.
+  Available after probation completion.
+
+LEAVE BALANCE TRACKING:
+- Check your leave balance anytime on the HRMS portal:
+  https://hrms.nexustech.com > My Leaves > Leave Balance
+- Balance is also displayed on your monthly payslip
+- HR sends a quarterly leave balance summary email
+
+NEGATIVE BALANCE:
+- Employees are not permitted to take leave in excess of their available
+  balance (negative leave balance)
+- In exceptional circumstances, an advance of up to 3 days of Earned Leave
+  may be granted with Department Head approval
+- Any negative balance at separation will be deducted from the final settlement
+
+PRO-RATION FOR MID-YEAR JOINERS:
+| Joining Month | CL Allocation | SL Allocation |
+|:---:|:---:|:---:|
+| Jan | 12 | 12 |
+| Feb | 11 | 11 |
+| Mar | 10 | 10 |
+| Apr | 9 | 9 |
+| May | 8 | 8 |
+| Jun | 7 | 7 |
+| Jul | 6 | 6 |
+| Aug | 5 | 5 |
+| Sep | 4 | 4 |
+| Oct | 3 | 3 |
+| Nov | 2 | 2 |
+| Dec | 1 | 1 |
+
+================================================================================
+CHAPTER 4: LEAVE APPLICATION PROCESS
+================================================================================
+
+All leave requests must be submitted through the HRMS portal. Here is the
+step-by-step process:
+
+STEP 1: LOG IN TO HRMS
+- Go to https://hrms.nexustech.com
+- Log in with your company credentials
+
+STEP 2: SUBMIT LEAVE REQUEST
+- Navigate to: My Leaves > Apply Leave
+- Select the leave type (CL, SL, EL, Comp Off, etc.)
+- Choose the start date and end date
+- Select Full Day or Half Day
+- Enter the reason for leave (mandatory)
+- Attach supporting documents if required (medical certificate for SL > 2 days)
+- Click "Submit"
+
+STEP 3: NOTIFICATION
+- Your manager receives an email and Slack notification
+- You receive a confirmation email with the leave request ID
+- Status shows as "Pending Approval" in the portal
+
+STEP 4: TRACK STATUS
+- My Leaves > Leave History shows all your leave requests
+- Status: Pending / Approved / Rejected / Cancelled
+
+CANCELLATION:
+- You can cancel a pending or approved leave request before the start date
+- To cancel: My Leaves > Leave History > Select Request > Cancel
+- Cancelled leaves are credited back to your balance within 1 business day
+
+IMPORTANT NOTES:
+- Leave applications should be submitted before 12:00 PM of the leave start
+  date (for unplanned leaves like sick leave)
+- Late applications may be marked as "Leave Without Pay" (LWP) at the
+  manager's discretion
+- For emergencies where you cannot access HRMS, inform your manager via
+  call/SMS and apply on HRMS within 2 days of returning
+
+================================================================================
+CHAPTER 5: MANAGER APPROVAL WORKFLOW
+================================================================================
+
+The leave approval process follows a structured workflow:
+
+APPROVAL HIERARCHY:
+1. Leave requests of 1-3 days: Approved by immediate manager (L+1)
+2. Leave requests of 4-7 days: Approved by manager + Department Head (L+2)
+3. Leave requests of 8+ days: Approved by manager + Department Head + HR
+
+APPROVAL TIMELINE:
+- Managers must act on leave requests within 2 business days
+- If no action is taken within 3 business days, the request auto-escalates
+  to the next level
+- Urgent/emergency leave requests should be approved within 4 hours
+
+GROUNDS FOR REJECTION:
+Managers may reject leave requests for the following reasons:
+- Critical project deadlines or deliverables
+- Insufficient team coverage (minimum 50% team attendance required)
+- Leave blackout period (e.g., quarter-end, audit periods)
+- Incomplete leave application (missing reason or documents)
+
+REJECTION PROCESS:
+- Manager must provide a reason for rejection
+- Employee receives email notification with the rejection reason
+- Employee can resubmit with modified dates or escalate to HR
+
+LEAVE BLACKOUT PERIODS:
+The following periods are subject to leave restrictions:
+- Last week of each financial quarter (March, June, September, December)
+- Annual audit period (April 1-15)
+- Company-wide events (annual conference, town halls)
+- Managers may declare team-specific blackout periods with 2 weeks' notice
+
+================================================================================
+CHAPTER 6: PUBLIC HOLIDAYS CALENDAR 2025
+================================================================================
+
+Nexus Technologies observes the following public holidays in 2025:
+
+| # | Date | Day | Holiday |
+|:---:|:---|:---:|:---|
+| 1 | January 1 | Wednesday | New Year's Day |
+| 2 | January 14 | Tuesday | Makar Sankranti / Pongal |
+| 3 | January 26 | Sunday | Republic Day |
+| 4 | March 14 | Friday | Holi |
+| 5 | March 31 | Monday | Idul Fitr (Eid-ul-Fitr) * |
+| 6 | April 6 | Sunday | Ram Navami |
+| 7 | April 10 | Thursday | Mahavir Jayanti |
+| 8 | April 14 | Monday | Dr. Ambedkar Jayanti |
+| 9 | April 18 | Friday | Good Friday |
+| 10 | May 1 | Thursday | May Day / Labour Day |
+| 11 | June 7 | Saturday | Eid-ul-Adha (Bakrid) * |
+| 12 | July 6 | Sunday | Muharram * |
+| 13 | August 15 | Friday | Independence Day |
+| 14 | August 16 | Saturday | Janmashtami |
+| 15 | September 5 | Friday | Milad-un-Nabi * |
+| 16 | October 2 | Thursday | Gandhi Jayanti |
+| 17 | October 2 | Thursday | Maha Ashtami (Navratri) |
+| 18 | October 20 | Monday | Diwali (Deepavali) |
+| 19 | October 21 | Tuesday | Diwali Holiday |
+| 20 | November 5 | Wednesday | Guru Nanak Jayanti |
+| 21 | December 25 | Thursday | Christmas |
+
+* Dates are tentative and subject to lunar calendar; final dates will be
+  confirmed by HR.
+
+ADDITIONAL NOTES:
+- If a public holiday falls on a weekend, no substitute holiday is provided
+  (except for Republic Day and Independence Day, which will be observed on
+  the following Monday)
+- Employees may avail 2 "Floating Holidays" per year for festivals not
+  listed above (apply via HRMS as "Floating Holiday")
+- Office will operate with skeleton staff on days before and after long
+  weekends — coordinate with your manager
+
+================================================================================
+CHAPTER 7: LEAVE CARRY-FORWARD & ENCASHMENT RULES
+================================================================================
+
+CARRY-FORWARD RULES:
+- Casual Leave: NOT carried forward. Unused CL lapses on December 31st.
+- Sick Leave: NOT carried forward. Unused SL lapses on December 31st.
+- Earned Leave: Can be carried forward to the next year, subject to a
+  maximum accumulation cap of 30 days.
+- Comp Off: NOT carried forward. Must be used within 30 days of earning.
+
+LEAVE ENCASHMENT:
+- Only Earned Leave (EL) is eligible for encashment
+- Encashment is calculated at: (Basic Salary / 30) × Number of EL days
+- Encashment is available at the following times:
+  1. At the time of separation/resignation (all accumulated EL)
+  2. Once per year in December (for EL balance exceeding 15 days, you may
+     encash the excess)
+  3. At retirement (all accumulated EL)
+
+LEAVE LAPSE:
+- Casual Leave and Sick Leave balance resets to zero on January 1st
+- Earned Leave exceeding 30 days is auto-encashed in January payroll
+- Employees are encouraged to use their leave entitlements — rest is
+  important for productivity and well-being!
+
+EXAMPLES:
+1. Employee A has 5 unused CL and 20 EL on Dec 31:
+   → CL (5 days): Lapses
+   → EL (20 days): Carries forward fully (under 30-day cap)
+
+2. Employee B has 35 EL on Dec 31:
+   → EL (30 days): Carries forward
+   → EL (5 days excess): Auto-encashed in January payroll
+
+================================================================================
+CHAPTER 8: SPECIAL LEAVE PROVISIONS
+================================================================================
+
+8.1 SABBATICAL LEAVE
+- Eligibility: Employees with 5+ years of continuous service
+- Duration: 1 to 3 months (unpaid, but with job protection)
+- Purpose: Higher education, personal projects, caregiving, travel
+- Application: Submit at least 2 months in advance to HR and Department Head
+- Benefits during sabbatical: Health insurance continues; ESOPs vest normally
+
+8.2 ADOPTION LEAVE
+- Female employees: Same as maternity leave (26 weeks for first two children)
+- Male employees: 15 days (same as paternity leave)
+- Must provide adoption papers to HR
+
+8.3 MISCARRIAGE / MEDICAL TERMINATION LEAVE
+- Entitlement: 6 weeks from the date of miscarriage or medical termination
+- Medical certificate required
+- Fully paid leave
+- Confidentiality strictly maintained
+
+8.4 JURY DUTY / GOVERNMENT SUMMONS
+- Paid leave for the duration of the duty
+- Submit official summons to HR
+- Resume work within 1 day of duty completion
+
+8.5 ELECTION LEAVE
+- Paid leave on the day of state or national elections
+- No application required — auto-declared by HR if office is in the
+  election constituency
+
+8.6 NATURAL DISASTER / PANDEMIC LEAVE
+- Special leave may be declared by the CEO during natural disasters,
+  pandemics, or other force majeure events
+- Terms will be communicated via company-wide email and Slack #general
+
+================================================================================
+CHAPTER 9: UNAUTHORIZED ABSENCE & CONSEQUENCES
+================================================================================
+
+DEFINITION:
+Unauthorized absence is when an employee is absent from work without:
+- Submitting a leave application
+- Informing their manager
+- Having approved leave in the system
+
+CONSEQUENCES:
+1. FIRST OCCURRENCE:
+   - Verbal warning from the manager
+   - Leave marked as "Leave Without Pay" (LWP)
+   - Deduction from salary: (Basic Salary / 30) × LWP days
+
+2. SECOND OCCURRENCE (within 6 months):
+   - Written warning issued by HR
+   - Leave marked as LWP
+   - Incident recorded in personnel file
+
+3. THIRD OCCURRENCE (within 12 months):
+   - Final written warning
+   - May affect performance review rating
+   - Mandatory counseling session with HR
+
+4. REPEATED VIOLATIONS:
+   - Considered gross misconduct
+   - May lead to termination of employment
+
+EXCEPTIONS:
+- Medical emergencies where the employee was unable to communicate
+  (hospitalization, accident) — medical proof required
+- Natural disasters or situations beyond the employee's control
+
+================================================================================
+CHAPTER 10: ATTENDANCE & TIME TRACKING
+================================================================================
+
+ATTENDANCE SYSTEM:
+- Office employees: Biometric attendance (fingerprint or face recognition)
+  at building entrances
+- Remote employees: Self-declaration via HRMS portal + Slack #attendance
+- Hybrid employees: Biometric on office days, self-declaration on WFH days
+
+MINIMUM ATTENDANCE REQUIREMENTS:
+- All employees must maintain a minimum attendance of 90% per month
+  (excluding approved leaves)
+- Employees below 85% attendance for 2 consecutive months will receive
+  an attendance warning from HR
+- Chronic low attendance may trigger a review meeting with HR
+
+LATE ARRIVAL POLICY:
+- Grace period: 15 minutes (arrival by 10:15 AM if core hours start at 10 AM)
+- More than 3 late arrivals in a month: 0.5 CL deducted automatically
+- Consistently late employees will be counseled by their manager
+
+EARLY DEPARTURE:
+- Leaving before 4:00 PM (end of core hours) requires manager approval
+- Unapproved early departures are marked as half-day absence
+
+ATTENDANCE REGULARIZATION:
+If you forget to mark attendance:
+1. Go to HRMS > Attendance > Regularization Request
+2. Select the date and provide a reason
+3. Your manager will approve/reject within 1 business day
+4. Regularization requests must be submitted within 3 days
+
+================================================================================
+CHAPTER 11: LEAVE MANAGEMENT DESK CONTACT INFORMATION
+================================================================================
+
+For all leave and attendance-related queries, please contact:
+
+LEAVE MANAGEMENT DESK:
+  Contact: Leave & Attendance Team
+  Email: leave.desk@nexustech.com
+  Phone: +91-40-2345-6791
+  Extension: 1005
+  Hours: Monday-Friday, 9:00 AM - 5:30 PM
+  Location: 3rd Floor, Building A, Nexus Campus, Hyderabad
+  HRMS Portal: https://hrms.nexustech.com
+
+COMMON QUERIES HANDLED:
+- Leave balance inquiries
+- Leave policy clarifications
+- Attendance correction requests
+- Comp-off queries
+- Leave encashment calculations
+- Public holiday confirmations
+
+LEAVE MANAGEMENT TEAM:
+  Team Lead: Kavitha Reddy (kavitha.reddy@nexustech.com, Ext. 1006)
+  Leave Executive: Suresh Kumar (suresh.kumar@nexustech.com, Ext. 1007)
+
+ESCALATION:
+If your leave issue is not resolved within 3 business days, escalate to:
+  HR Manager: Priya Sharma (priya.sharma@nexustech.com, Ext. 1002)
+  HR Head: Venkat Rao (venkat.rao@nexustech.com, Ext. 1000)
+
+================================================================================
+                    © 2025 Nexus Technologies Pvt. Ltd.
+                         All Rights Reserved.
+================================================================================
